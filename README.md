@@ -10,8 +10,8 @@
 ## environment
 
 - python3.7
-- Docker version 17.03.1-ce, build c6d412e
-- docker-compose version 1.12.0, build b31ff33
+- Docker version 19.03.5, build 633a0ea
+- docker-compose version 1.24.1, build 4667896b
 
 
 ## 共通事項
