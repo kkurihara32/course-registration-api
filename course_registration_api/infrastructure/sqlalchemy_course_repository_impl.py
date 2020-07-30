@@ -3,4 +3,5 @@ from course_registration_api.domain.courses.course_repository \
 
 
 class SqlalchemyCourseRepositoryImpl(CourseRepository):
+    # TODO: 実装
     pass
