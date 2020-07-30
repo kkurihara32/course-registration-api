@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
-from course_registration_api.presentation.health.health_resource import HealthResource
+from course_registration_api.presentation.health.health_resource \
+    import HealthResource
 
 
 health_rest_controller_bp = Blueprint("HealthRestController", __name__)
