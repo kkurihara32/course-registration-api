@@ -7,6 +7,11 @@
 
 環境構築時はdocker-compose.ymlを参照した上で、env.sampleを参考に環境変数の設定をはじめに適宜行ってください。
 
+## environment
+
+- python3.7
+- Docker version 17.03.1-ce, build c6d412e
+- docker-compose version 1.12.0, build b31ff33
 
 
 ## 共通事項
