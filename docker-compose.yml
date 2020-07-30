@@ -1,0 +1,53 @@
+version: "3.7"
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./configuration/nginx.conf:/etc/nginx/conf.d/course_registration.conf
+    depends_on:
+      - api
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "5"
+
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: course-registrarion-api:${TAG}
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_CHARSET=${DB_CHARSET}
+    volumes:
+      - ./course_registration_api/log:/course-registration-api/course_registration_api/log
+    entrypoint: "/bin/sh -c 'sleep 30 && uwsgi --ini configuration/uwsgi.dev.ini'"
+      logging:
+        driver: "json-file"
+        options:
+          max-size: "200k"
+          max-file: "5"
+
+  db:
+    image: mysql:8.0.16
+    ports: ${DB_PORT:-3306}:3306
+    volumes:
+      - ./tmp/mysql:/var/lib/mysql
+      - ./tmp/mysql-log:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PASSWORD}
+      BIND_ADDRESS: 0.0.0.0
+      TZ: Asia/Tokyo
+      restart: always
+
+
