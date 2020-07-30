@@ -13,7 +13,7 @@ class TestValueObject(unittest.TestCase):
         with self.subTest(msg="二つのオブジェクトの同値性確認"):
             test_value = ValueObject("test_object")
             other_value = ValueObject("test_object")
-            actual = test_value.value == other_value.value
+            actual = test_value == other_value
             self.assertTrue(actual)
         with self.subTest(msg="hash値の保持の確認"):
             test_value = ValueObject("test_object")
