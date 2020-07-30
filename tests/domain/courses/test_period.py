@@ -5,7 +5,7 @@ from course_registration_api.domain.shared.exceptions \
     import InvalidPeriodException
 
 
-class MyTestCase(unittest.TestCase):
+class TestPeriod(unittest.TestCase):
     def test_initialize(self):
         test_period = Period(1)
         actual = test_period.value

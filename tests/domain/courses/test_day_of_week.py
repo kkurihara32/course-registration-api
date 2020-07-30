@@ -3,7 +3,7 @@ import unittest
 from course_registration_api.domain.courses.day_of_week import DayOfWeek
 
 
-class MyTestCase(unittest.TestCase):
+class TestDayOfWeek(unittest.TestCase):
     def test_elements(self):
         with self.subTest(msg="number of elements"):
             actual = len(DayOfWeek._member_names_)
